@@ -1,0 +1,1 @@
+Calculate numbers using basic arithmetic functions. Can continue calculations from previous result.
