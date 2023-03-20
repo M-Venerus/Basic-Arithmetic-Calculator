@@ -1,31 +1,42 @@
 print("Weclome to the Basic Arithmetic Calculator Application!\n")
 
-# TODO Create dictionary for operators and their defined functions
+def add(n1, n2):
+    return n1 + n2
 
+def subtract(n1, n2):
+    return n1 - n2
 
+def multiply(n1, n2):
+    return n1 * n2
 
-# TODO Define main function for the two numbers and their result. Will call 
-# the dictionary functions.
+def divide(n1, n2):
+    return n1 / n2
 
+operations = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "/": divide
+}
 
+def calculator():
+    num1 = float(input("What is the first number?: "))
+    for symbol in operations:
+        print(symbol)
+    should_continue = True
 
-# TODO Create a print statement that prints the first number, the operator, the second
-# number, and what their result is.
+    while should_continue:
+        operation_symbol = input("Pick an operation: ")
+        num2 = float(input("What's the next number?: "))
+        calculation_function = operations[operation_symbol]
+        answer = calculation_function(num1, num2)
 
+        print(f"{num1} {operation_symbol} {num2} = {answer}")
 
+        if input("Type 'y' to continue calculating with {answer}, or type 'n' to start a new calculation: ") == "y":
+            num1 = answer
+        else:
+            should_continue = False
+            calculator()
 
-# TODO Type 'y' to continue calculating with 'the result', or type 'n' to start a new calculation.
-# This means if they enter 'y' that they will be using the previous result as the first 
-# number and be prompted to pick an operation again. If they type 'n', a while loop will 
-# loop back to the beginning and start from scratch (The program will always be functioning)
-
-# Some code I pre-wrote below that needs to find its place.
-num_1 = input("What is the first number?: ")
-print('''+
--
-*
-/''')
-operator = input("Pick an operation: ")
-num_2 = input("What's the next number?: ")
-
-
+calculator()
